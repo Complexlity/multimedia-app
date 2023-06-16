@@ -60,7 +60,6 @@ useEffect(() => {
   }
 
   function searchByName(item, searchString) {
-    console.log({ searchString})
     if (!searchString) return true;
     const itemName = item.name.toLowerCase()
     searchString = searchString.toLowerCase()
@@ -68,7 +67,6 @@ useEffect(() => {
   }
 
   function filterByFileType(item, fileType) {
-    console.log({fileType})
     if (fileType === "default") return true;
     const itemType = item.type.toLowerCase();
     fileType = fileType.toLowerCase();
