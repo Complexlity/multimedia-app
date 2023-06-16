@@ -37,14 +37,11 @@ export default function App() {
   const [filePath,] = useState("/file-server/");
   const [showChartModal, setShowChartModal] = useState(false);
 
-
-const types = [...new Set(data.map((item) => item.type))];
-
-
-  useEffect(() => {
+useEffect(() => {
     setMyFiles(aggregateQuery(debouncedSearch, fileType))
   }, [debouncedSearch, fileType])
 
+  const types = [...new Set(data.map((item) => item.type))];
   function aggregateQuery(searchString, type) {
     const items = [...data]
 
