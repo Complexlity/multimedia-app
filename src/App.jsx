@@ -45,18 +45,18 @@ useEffect(() => {
   function aggregateQuery(searchString, type) {
     const items = [...data]
 
-    const newItems = [];
+    const filteredItems = [];
     for (let i = 0; i < items.length; i++) {
       let curr = items[i]
       if (
         searchByName(curr, searchString) &&
         filterByFileType(curr, type)
       ) {
-        newItems.push(curr);
+        filteredItems.push(curr);
       }
     }
 
-    return newItems;
+    return filteredItems;
   }
 
   function searchByName(item, searchString) {
