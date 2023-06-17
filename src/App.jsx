@@ -258,7 +258,7 @@ var barChartOptions = {
                 <option value="default">Type</option>
                 {types.map((item, index) => (
                   <option key={index} value={item}>
-                    {item}s
+                    {item.charAt(0).toUpperCase() + item.slice(1)}s
                   </option>
                 ))}
               </select>
