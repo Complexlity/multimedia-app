@@ -12,11 +12,11 @@ I extended the multimedia application and added two features
 
 ### Search Feature
 
-With the new search feature, users are able to find the particular file they would want by it's name. As the number of files increase, this because a crucial feature as they would no need to scroll the entire length of the page (also which keep the attention of the eye) to find their files. They can just insert the file name in the query and find them
+With the new search feature, users are able to find the particular file they would want by its name. As the number of files increases, this because a crucial feature as they would no need to scroll the entire length of the page (also which keeps the attention of the eye) to find their files. They can just insert the file name in the query and find them
 
 ### Filter Feature
 
-This also is a very important feature of any file managing application. Users would be able to seperate file by their file type. This enhances user experience by allowing users quickly locate and access specific file types
+This also is a very important feature of any file-managing application. Users would be able to separate files by their file type. This enhances user experience by allowing users quickly locate and access specific file types
 
 ## How The Code Works
 
@@ -32,7 +32,7 @@ const [search, setSearch] = useState('')
 
 2. Create a search bar with a descriptive label and placeholder next to the delete component button.
 
-3. Style the search bar to look similar to the other buttons (background, text color, paadding), and use the style on the component
+3. Style the search bar to look similar to the other buttons (background, text color, padding), and use the style on the component
 
 ```jsx
 <div style={style.search}>
@@ -40,7 +40,7 @@ const [search, setSearch] = useState('')
 </div>
 ```
 
-4. Make the search bar a controlled input by giving it the value of the search state (which at the moment is empty (''))
+4. Make the search bar a controlled input by giving it the value of the `search` state (which at the moment is an empty string '')
 
 ```jsx
 <input type="search" value={search}>
@@ -52,7 +52,7 @@ const [search, setSearch] = useState('')
 <input type="search" value={search} onChange={(e) => setSearch(e.target.value)}>
 ```
 
-6. Create a function that takes a string and searches through the 'data' array and only return files whose items names are contained in the search string
+6. Create a function that takes a string and searches through the 'data' array and only returns files whose items names are contained in the search string
 
 ```jsx
 function searchByName(search, data){
@@ -84,13 +84,13 @@ const types = [...new Set(data.map((item) => item.type))];
 
 Doing it this way rather than manually ensures that even if a new file type is added in the data, it works automatically
 
-3. Create a new state for the currently displayed filetype
+2. Create a new state for the currently displayed filetype
 
 ```jsx
 const [fileType, setFileType] = useState('default')
 ```
 
-I have also chosen not use an empty string for the intial state
+I have also chosen not to use an empty string for the initial state
 
 3. Create a `Select` HTML element with on `default` option and loop through the `types` array to get all the other options. Also make the `Select` element a controlled input which takes it's value fron the `fileType` state
 
@@ -117,7 +117,7 @@ function filterByType(fileType, data){
 }
 ```
 
-6. Create a `useEffect` hook to run everytime the `fileType` state changes and runs the `filterByType` function
+6. Create a `useEffect` hook to run every time the `fileType` state changes and runs the `filterByType` function
 
 ```jsx
 useEffect(() => {
@@ -129,14 +129,14 @@ And that's it, we're able to now filter our data by the file types (videos, audi
 
 ## Refactor
 
-In the current state, there are a few things in a normal file manager which works a bit differently
+In the current state, there are a few things in a normal file manager which work a bit differently
 
-1. The search functionality occurs on each key stroke. The would affect performance in the long run
-2. The file type filter and the search do not work together i.e if you search `bo` and it shows files with names having `bo` and you want to filter these returned results. It fails because if you then filter, it resets the `search` results to the original before filter. This intuitively is not how normal file manager system works
+1. The search functionality occurs on each keystroke. This would affect performance in the long run
+2. The file type filter and the search do not work together i.e. if you search `bo` and it shows files with names having `bo` and you want to filter these returned results. It fails because if you then filter, it resets the `search` results to the original before the filter. This intuitively is not how a normal file manager system works
 
 ### Solutions
 
-1. To solve the search on every key stroke, I made a `useDebounce` hook that only changes it's value if some amount of time is passed (i.e the user must have stopped typing). I have set the time to 500ms and also changed the `useEffect` of the search function to run when `debouncedSearch` changes rather than when the `searchChanges`
+1. To solve the search on every keystroke, I made a `useDebounce` hook that only changes its value if some amount of time is passed (i.e. the user must have stopped typing). I have set the time to 500ms and also changed the `useEffect` of the search function to run when `debouncedSearch` changes rather than when the `searchChanges`
 
 ```jsx
 const debouncedSearch = useDebounce(search)
@@ -148,7 +148,7 @@ useEffect(() => {
 
 2. To make the search and the filter work together, we have to refactor a few more things
 
-- Change the `searchByName` function to return a boolean rather than do the work of search and filtering the whole array
+- Change the `searchByName` function to return a boolean rather than do the work of searching and filtering the whole array
 
 ```jsx
 function searchByName(item, debouncedSearch) {
@@ -164,17 +164,17 @@ function filterByType(item, fileType){
 }
 ```
 
-- Create an `aggregateQuery` function that actually loops through the array and return only elements that are true through both the search and the filter stages
+- Create an `aggregateQuery` function that actually loops through the array and returns only elements that are true through both the search and the filter stages
 
 ```jsx
 function aggregateQuery(searchString, fileType){
 //loop through the data array
-// check for items that are true after searchByName and filterByType functions
+//Check for items that are true after searchByName and filterByType functions
 //return a new array with these new items
 }
 ```
 
-- Remove all the other `useEffect` hooks and create a single one that runs this `aggregateQuery` function and sets `myFiles` to the it's result. It would also run whenever `debouncedSearch` and `fileType` changes
+- Remove all the other `useEffect` hooks and create a single one that runs this `aggregateQuery` function and sets `myFiles` to it's result. It would also run whenever `debouncedSearch` and `fileType` changes
 
 ```jsx
 useEffect(() => {
@@ -182,4 +182,4 @@ useEffect(() => {
 }, [debouncedSearch, fileType])
 ```
 
-And after these refactors, we have a working search function , filter function and they both are working smoothly together
+And after these refactors, we have a working search function, and filter function and they both are working smoothly together
