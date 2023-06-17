@@ -114,7 +114,7 @@ I have also chosen not use an empty string for the intial state
 ```jsx
 function filterByType(fileType, data){
   //loop through the data array and removes items whose type does not match the passed `type`
-  //return filteredTypeArray
+  //return filteredByTypeArray
 }
 ```
 
