@@ -41,15 +41,15 @@
 export const data = [
   {
     id: 1,
-    name: "Serenity Falls",
+    name: "Jujutsu Kaisen",
     type: "video",
-    path: "/file-server/video1.mp4",
+    path: "/file-server/jujutsu-kaisen.mp4",
   },
   {
     id: 2,
-    name: "Moonlit Symphony",
+    name: "Boruto",
     type: "video",
-    path: "/file-server/video2.mp4",
+    path: "/file-server/boruto.mp4",
   },
   {
     id: 3,
@@ -77,9 +77,9 @@ export const data = [
   },
   {
     id: 7,
-    name: "Sunset Voyage",
+    name: "Attack on Titan",
     type: "video",
-    path: "/file-server/video3.mp4",
+    path: "/file-server/attack-on-titan.mp4",
   },
   {
     id: 8,
@@ -101,9 +101,9 @@ export const data = [
   },
   {
     id: 11,
-    name: "Celestial Journey",
+    name: "Naruto",
     type: "video",
-    path: "/file-server/video4.mp4",
+    path: "/file-server/naruto.mp4",
   },
   {
     id: 12,
@@ -119,9 +119,9 @@ export const data = [
   },
   {
     id: 14,
-    name: "Dance of Light",
+    name: "Demon Slayer",
     type: "video",
-    path: "/file-server/video5.mp4",
+    path: "/file-server/demon-slayer.mp4",
   },
   {
     id: 15,
@@ -149,9 +149,9 @@ export const data = [
   },
   {
     id: 19,
-    name: "Journey of Reflections",
+    name: "Spiderman",
     type: "video",
-    path: "/file-server/video6.mp4",
+    path: "/file-server/spiderman.mp4",
   },
   {
     id: 20,
